@@ -8,17 +8,17 @@
     <link rel="stylesheet" href="/styles/main.css">
   </head>
   <body
-    class="flex flex-col min-h-full bg-[#FAFAFA] text-[#1A1A1A]">
+    class="flex flex-col min-h-full bg-background text-text">
     {# Responsive Header #}
-    <header class="sticky top-0 z-50 bg-white/80 backdxrop-blur-sm border-b border-gray-100 transition-all duration-300">
-      <div class="container mx-auto px-4 py-4">
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-secondary/10 transition-all duration-300">
+      <div class="container mx-auto px-6 py-6">
         <nav class="flex justify-between items-center">
-          <a href="/" class="text-xl font-bold hover:text-[#FF3B6F] transition-colors">
+          <a href="/" class="text-2xl font-display font-bold hover:text-primary transition-colors">
             {{ metadata.title }}
           </a>
-          <div class="flex items-center space-x-8">
-            <a href="/" class="text-body-lg hover:text-[#FF3B6F] transition-colors">Home</a>
-            <a href="/blog" class="text-body-lg hover:text-[#FF3B6F] transition-colors">Blog</a>
+          <div class="flex items-center space-x-12">
+            <a href="/" class="text-body-lg hover:text-primary transition-colors">Home</a>
+            <a href="/blog" class="text-body-lg hover:text-primary transition-colors">Blog</a>
           </div>
         </nav>
       </div>
@@ -28,16 +28,16 @@
       {{ content | safe }}
     </main>
     {# Responsive Footer #}
-    <footer class="bg-[#2D3047] text-white mt-auto">
+    <footer class="bg-secondary text-white mt-auto">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p class="text-sm">© {{ metadata.title }}
             {{ '' | date("yyyy") }}</p>
           <div class="flex items-center space-x-6">
-            <a href="#" class="text-white hover:text-[#FFD23F] transition-colors">TikTok</a>
-            <a href="#" class="text-white hover:text-[#FFD23F] transition-colors">Instagram</a>
-            <a href="#" class="text-white hover:text-[#FFD23F] transition-colors">YouTube</a>
-            <a href="#" class="text-white hover:text-[#FFD23F] transition-colors">LinkedIn</a>
+            <a href="https://tiktok.com/@deonnadoesai" class="text-white hover:text-accent transition-colors">TikTok</a>
+            <a href="https://instagram.com/deonnadoesai" class="text-white hover:text-accent transition-colors">Instagram</a>
+            <a href="https://youtube.com/@deonnadoesai" class="text-white hover:text-accent transition-colors">YouTube</a>
+            <a href="https://linkedin.com/in/deonna" class="text-white hover:text-accent transition-colors">LinkedIn</a>
           </div>
         </div>
       </div>
