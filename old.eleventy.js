@@ -1,0 +1,45 @@
+const postcss = require('postcss');
+const tailwindcss = require('tailwindcss');
+const autoprefixer = require('autoprefixer');
+
+module.exports = function(eleventyConfig) {
+  // Watch CSS files for changes
+  eleventyConfig.addWatchTarget("./src/styles/");
+  
+  // Pass through static files
+  eleventyConfig.addPassthroughCopy("./src/assets");
+  eleventyConfig.addPassthroughCopy("./src/styles/main.css");
+
+  // Process CSS with PostCSS and Tailwind
+  eleventyConfig.addTemplateFormats("css");
+  eleventyConfig.addExtension("css", {
+    outputFileExtension: "css",
+    compile: async function(inputContent, inputPath) {
+      if (inputPath.includes("_site")) return;
+      
+      let result = await postcss([
+        tailwindcss,
+        autoprefixer
+      ]).process(inputContent, {
+        from: inputPath,
+        to: inputPath
+      });
+
+      return async () => result.css;
+    }
+  });
+
+  return {
+    dir: {
+      input: "src",
+      output: "_site",
+      includes: "_includes",
+      layouts: "_includes",
+      data: "_data"
+    },
+    templateFormats: ["md", "njk", "html"],
+    markdownTemplateEngine: "njk",
+    htmlTemplateEngine: "njk",
+    dataTemplateEngine: "njk"
+  };
+};

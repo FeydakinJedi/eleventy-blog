@@ -1,0 +1,25 @@
+{# src/_includes/base.njk #}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ title }} | {{ metadata.title }}</title>
+        <meta name="description" content="{{ metadata.description }}">
+          <link rel="stylesheet" href="/styles/main.css"></head>
+          <body class="min-h-screen">
+            <header class="container mx-auto px-4 py-6">
+              <nav>
+                <a href="/" class="text-lg font-medium">Home</a>
+                <a href="/blog" class="text-lg font-medium ml-4">Blog</a>
+              </nav>
+            </header>
+            <main class="container mx-auto px-4 py-8">
+              {{ content | safe }}
+            </main>
+            <footer class="container mx-auto px-4 py-6">
+              <p class="text-center text-sm">© {{ metadata.title }}
+                {{ '' | date("yyyy") }}</p>
+            </footer>
+          </body>
+        </html>
