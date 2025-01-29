@@ -1,10 +1,11 @@
+@import "fonts.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   body {
-    @apply bg-[#FAFAFA] text-[#1A1A1A];
+    @apply bg-[#FAFAFA] text-[#1A1A1A] font-body;
   }
 
   h1,
@@ -13,7 +14,23 @@
   h4,
   h5,
   h6 {
-    @apply font-bold text-[#2D3047];
+    @apply font-display font-bold text-[#2D3047];
+  }
+
+  h1 {
+    @apply text-display-1;
+  }
+
+  h2 {
+    @apply text-display-2;
+  }
+
+  h3 {
+    @apply text-display-3;
+  }
+
+  p {
+    @apply text-body;
   }
 
   a {

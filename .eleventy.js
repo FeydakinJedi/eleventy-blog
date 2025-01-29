@@ -9,6 +9,7 @@ module.exports = function(eleventyConfig) {
   
   // Pass through static files
   eleventyConfig.addPassthroughCopy("./src/assets");
+  eleventyConfig.addPassthroughCopy({ "src/assets/fonts": "fonts" });
 
   // Add date filter
   eleventyConfig.addFilter("date", function(date, format = "yyyy-MM-dd") {
