@@ -9,11 +9,13 @@ module.exports = function(eleventyConfig) {
   
   // Pass through static files
   eleventyConfig.addPassthroughCopy("./src/assets");
-  eleventyConfig.addPassthroughCopy("./src/styles/main.css");
 
   // Add date filter
   eleventyConfig.addFilter("date", function(date, format = "yyyy-MM-dd") {
-    return DateTime.fromJSDate(date).toFormat(format);
+    if (!date) {
+      return DateTime.now().toFormat(format);
+    }
+    return DateTime.fromJSDate(new Date(date)).toFormat(format);
   });
 
   // Process CSS with PostCSS and Tailwind
@@ -24,6 +26,7 @@ module.exports = function(eleventyConfig) {
       if (inputPath.includes("_site")) return;
       
       console.log('Processing CSS file:', inputPath);
+      console.log('CSS Content:', inputContent);
       
       let result = await postcss([
         tailwindcss,
@@ -33,6 +36,7 @@ module.exports = function(eleventyConfig) {
         to: inputPath
       });
 
+      console.log('Processed CSS size:', result.css.length);
       return async () => result.css;
     }
   });
@@ -50,4 +54,4 @@ module.exports = function(eleventyConfig) {
     htmlTemplateEngine: "njk",
     dataTemplateEngine: "njk"
   };
-}; 
+};    
