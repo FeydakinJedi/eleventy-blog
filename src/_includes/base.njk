@@ -1,54 +1,88 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} | {{ metadata.title }}</title>
-    <meta name="description" content="{{ metadata.description }}">
-    <link rel="stylesheet" href="/styles/main.css">
-  </head>
-  <body
-    class="flex flex-col min-h-full bg-background text-text">
-    {# Responsive Header #}
-    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-secondary/10 transition-all duration-300">
-      <div class="container mx-auto px-6 py-6">
-        <nav class="flex justify-between items-center">
-          <a href="/" class="text-2xl font-display font-bold hover:text-primary transition-colors">
-            {{ metadata.title }}
-          </a>
-          <div class="flex items-center space-x-12">
-            <a href="/" class="text-body-lg hover:text-primary transition-colors">Home</a>
-            <a href="/blog" class="text-body-lg hover:text-primary transition-colors">Blog</a>
-          </div>
-        </nav>
-      </div>
-    </header>
-    {# Main Content Area with Responsive Padding #}
-    <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
-      {{ content | safe }}
-    </main>
-    {# Responsive Footer #}
-    <footer class="bg-secondary text-white mt-auto">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p class="text-sm">© {{ metadata.title }}
-            {{ '' | date("yyyy") }}</p>
-          <div class="flex items-center gap-8">
-            <a href="https://tiktok.com/@deonnadoesai" class="text-white hover:text-accent transition-colors">
-              {% svg "tiktok", "w-5 h-5" %}
-            </a>
-            <a href="https://instagram.com/deonnadoesai" class="text-white hover:text-accent transition-colors">
-              {% svg "instagram", "w-5 h-5" %}
-            </a>
-            <a href="https://youtube.com/@deonnadoesai" class="text-white hover:text-accent transition-colors">
-              {% svg "youtube", "w-5 h-5" %}
-            </a>
-            <a href="https://linkedin.com/in/deonna" class="text-white hover:text-accent transition-colors">
-              {% svg "linkedin", "w-5 h-5" %}
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </body>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>{{ title }} | {{ metadata.title }}</title>
+      <meta name="description" content="{{ metadata.description }}">
+      <link rel="stylesheet" href="/styles/main.css">
+      <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+   </head>
+   <body
+      class="flex flex-col min-h-full bg-background text-text">
+      {# Responsive Header #}
+      <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-secondary/10 transition-all duration-300">
+         <div class="container mx-auto px-6 py-6">
+            <nav x-data="{ isOpen: false }" class="relative flex justify-between items-center">
+               <a href="/" class="text-2xl font-display font-bold hover:text-primary transition-colors">
+                  {{ metadata.title }}
+               </a>
+               <!-- Mobile menu button -->
+               <button
+                  @click="isOpen = !isOpen"
+                  class="lg:hidden group p-2 hover:bg-secondary/5 rounded-lg transition-colors"
+                  aria-label="Toggle menu">
+                  <svg class="w-6 h-6 text-secondary" :class="{ 'rotate-180': isOpen }" fill="none" stroke="currentColor">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                  </svg>
+               </button>
+               <!-- Desktop Navigation -->
+               <div class="hidden lg:flex items-center space-x-12">
+                  <a href="/" class="text-body-lg hover:text-primary transition-colors">Home</a>
+                  <a href="/blog" class="text-body-lg hover:text-primary transition-colors">Blog</a>
+                  <a href="/about" class="text-body-lg hover:text-primary transition-colors">About</a>
+                  <button class="custom-button">
+                     Subscribe
+                  </button>
+               </div>
+               <!-- Mobile Navigation -->
+               <div
+                  x-show="isOpen"
+                  x-transition:enter="transition ease-out duration-200"
+                  x-transition:enter-start="opacity-0 -translate-y-4"
+                  x-transition:enter-end="opacity-100 translate-y-0"
+                  x-transition:leave="transition ease-in duration-150"
+                  x-transition:leave-start="opacity-100 translate-y-0"
+                  x-transition:leave-end="opacity-0 -translate-y-4"
+                  class="absolute top-full right-0 left-0 bg-white shadow-lg rounded-b-lg mt-2 py-4 lg:hidden">
+                  <div class="flex flex-col space-y-4 px-6">
+                     <a href="/" class="text-body-lg hover:text-primary transition-colors">Home</a>
+                     <a href="/blog" class="text-body-lg hover:text-primary transition-colors">Blog</a>
+                     <a href="/about" class="text-body-lg hover:text-primary transition-colors">About</a>
+                     <button class="custom-button-mobile">
+                        Subscribe
+                     </button>
+                  </div>
+               </div>
+            </nav>
+         </div>
+      </header>
+      {# Main Content Area with Responsive Padding #}
+      <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+         {{ content | safe }}
+      </main>
+      {# Responsive Footer #}
+      <footer class="bg-secondary text-white mt-auto">
+         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+               <p class="text-sm">© {{ metadata.title }}
+                  {{ '' | date("yyyy") }}</p>
+               <div class="flex items-center gap-8">
+                  <a href="https://tiktok.com/@deonnadoesai" class="text-white hover:text-accent transition-colors">
+                     {% svg "tiktok", "w-5 h-5" %}
+                  </a>
+                  <a href="https://instagram.com/deonnadoesai" class="text-white hover:text-accent transition-colors">
+                     {% svg "instagram", "w-5 h-5" %}
+                  </a>
+                  <a href="https://youtube.com/@deonnadoesai" class="text-white hover:text-accent transition-colors">
+                     {% svg "youtube", "w-5 h-5" %}
+                  </a>
+                  <a href="https://linkedin.com/in/deonna" class="text-white hover:text-accent transition-colors">
+                     {% svg "linkedin", "w-5 h-5" %}
+                  </a>
+               </div>
+            </div>
+         </div>
+      </footer>
+   </body>
 </html>

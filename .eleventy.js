@@ -18,9 +18,9 @@ module.exports = function(eleventyConfig) {
         console.error(`SVG file empty: ${name}.svg`);
         return `<!-- SVG ${name} empty -->`;
       }
-      console.log(`SVG content found: ${svg.length > 0 ? 'yes' : 'no'}`);
+      // console.log(`SVG content found: ${svg.length > 0 ? 'yes' : 'no'}`);
       const result = svg.replace('<svg', `<svg class="${className}"`);
-      console.log(`Modified SVG: ${result.substring(0, 50)}...`);
+      // console.log(`Modified SVG: ${result.substring(0, 50)}...`);
       return result;
     } catch (error) {
       console.error(`Error loading SVG ${name}:`, error);
