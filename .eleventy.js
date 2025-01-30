@@ -3,11 +3,12 @@ const tailwindcss = require('tailwindcss');
 const autoprefixer = require('autoprefixer');
 const fs = require('fs');
 const { DateTime } = require("luxon");
+const readingTime = require('reading-time');
 
 module.exports = function(eleventyConfig) {
   // SVG Icon Shortcode
   eleventyConfig.addShortcode("svg", function(name, className) {
-    console.log(`Loading SVG: ${name} from ./src/svg/${name}.svg`);
+    // console.log(`Loading SVG: ${name} from ./src/svg/${name}.svg`);
     try {
       if (!fs.existsSync(`./src/svg/${name}.svg`)) {
         console.error(`SVG file not found: ${name}.svg`);
@@ -44,6 +45,17 @@ module.exports = function(eleventyConfig) {
     return DateTime.fromJSDate(new Date(date)).toFormat(format);
   });
 
+  // Category filter
+  eleventyConfig.addFilter("filterByCategory", function(posts, category) {
+    return posts.filter(post => post.data.category === category);
+  });
+
+  // Reading time filter
+  eleventyConfig.addFilter("readingTime", function(content) {
+    const stats = readingTime(content);
+    return Math.ceil(stats.minutes);
+  });
+
   // Process CSS with PostCSS and Tailwind
   eleventyConfig.addTemplateFormats("css");
   eleventyConfig.addExtension("css", {
@@ -66,6 +78,41 @@ module.exports = function(eleventyConfig) {
       console.log('Sample of processed CSS:', result.css.substring(0, 500));
       return async () => result.css;
     }
+  });
+
+  // RSS Feed Filters
+  eleventyConfig.addFilter("dateToRfc3339", (date) => {
+    return DateTime.fromJSDate(date).toISO();
+  });
+
+  eleventyConfig.addFilter("getNewestCollectionItemDate", (collection) => {
+    if (!collection || !collection.length) {
+      return new Date();
+    }
+    return collection.reduce((acc, curr) => {
+      const currDate = curr.date || curr.data.date;
+      return currDate > acc ? currDate : acc;
+    }, collection[0].date || collection[0].data.date);
+  });
+
+  // Add absolute URL filter for RSS feed
+  eleventyConfig.addFilter("absoluteUrl", (url, base) => {
+    try {
+      return new URL(url, base).toString();
+    } catch(e) {
+      console.error("Error creating URL:", e);
+      return url;
+    }
+  });
+
+  // Add HTML to absolute URLs filter for RSS feed
+  eleventyConfig.addFilter("htmlToAbsoluteUrls", (content, base) => {
+    if (!base) return content;
+    
+    // Convert relative URLs to absolute
+    return content.replace(/(href|src)="\/([^"]*)"/g, (match, attr, path) => {
+      return `${attr}="${new URL(path, base).toString()}"`;
+    });
   });
 
   return {

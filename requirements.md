@@ -44,7 +44,6 @@ A modern, animated personal landing page that showcases Deonna's social media pr
    - Text: #1A1A1A (Soft Black)
 
 3. Components
-   - Social media buttons
    - Navigation menu
    - Card layouts for future blog posts
    - Custom animated buttons
@@ -91,6 +90,7 @@ A modern, animated personal landing page that showcases Deonna's social media pr
    - Individual post template
    - Category system
    - RSS feed
+   - Card layouts with hero images for future blog posts
 
 2. Blog Features
    - Reading time estimate
