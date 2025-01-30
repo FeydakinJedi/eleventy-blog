@@ -6,6 +6,8 @@ const { DateTime } = require("luxon");
 const readingTime = require('reading-time');
 
 module.exports = function(eleventyConfig) {
+  console.log("Registering shortcodes...");
+
   // Transform for XML files
   eleventyConfig.addTransform("xmlTransform", function(content, outputPath) {
     if (outputPath && outputPath.endsWith(".xml")) {
@@ -13,6 +15,19 @@ module.exports = function(eleventyConfig) {
       return content.replace(/^\s+<?xml/, '<?xml');
     }
     return content;
+  });
+
+  // Hero Placeholder Shortcode
+  eleventyConfig.addShortcode("heroPlaceholder", function(title) {
+    console.log("Generating placeholder for:", title);
+    return `<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="675" fill="#2D3047" />
+      <rect x="100" y="187.5" width="1000" height="300" fill="#FF3B6F" fill-opacity="0.1" rx="20" />
+      <text x="600" y="337.5" font-family="system-ui" font-size="36" fill="#FF3B6F" text-anchor="middle"
+        dominant-baseline="middle">
+        ${title}
+      </text>
+    </svg>`;
   });
 
   // SVG Icon Shortcode
