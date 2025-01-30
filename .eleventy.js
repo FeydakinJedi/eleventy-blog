@@ -1,9 +1,17 @@
 const postcss = require('postcss');
 const tailwindcss = require('tailwindcss');
 const autoprefixer = require('autoprefixer');
+const fs = require('fs');
 const { DateTime } = require("luxon");
 
 module.exports = function(eleventyConfig) {
+  // SVG Icon Shortcode
+  eleventyConfig.addShortcode("svg", function(name, className) {
+    let svg = fs.readFileSync(`./src/svg/${name}.svg`, 'utf8');
+    // Insert the class attribute before the closing bracket of the opening svg tag
+    return svg.replace('<svg', `<svg class="${className}"`);
+  });
+
   // Watch CSS files for changes
   eleventyConfig.addWatchTarget("./src/styles/");
   

@@ -4,38 +4,37 @@ title: Home
 ---
 
 <div class="max-w-4xl mx-auto space-y-12 pt-16">
-   <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-      <div class="shrink-0">
-         <div class="w-48 h-48 rounded-full overflow-hidden ring-4 ring-primary/20 bg-gradient-to-br from-primary/5 to-accent/5">
-            <img src="/assets/images/profile.jpg" alt="Deonna's profile picture" class="w-full h-full object-cover">
-         </div>
-      </div>
-      <div class="space-y-12 text-center md:text-left">
-         <h1 class="text-5xl md:text-7xl font-bold tracking-tight">
-            Deonna Does AI
-         </h1>
-         <p class="text-xl text-gray-700 leading-relaxed">
-            Welcome to Deonna Does AI! I'm passionate about exploring and sharing insights about artificial intelligence through
-            engaging content and meaningful discussions.
-         </p>
-      </div>
-   </div>
-   <div class="flex flex-wrap justify-center md:justify-start gap-8 pt-12">
-      <a href="https://tiktok.com/@deonnadoesai" class="group flex flex-col items-center gap-2 transition-colors">
-         {% include "icons/tiktok.njk" with { class: "w-8 h-8 text-secondary group-hover:text-primary" } %}
-         <span class="text-sm font-medium group-hover:text-primary">TikTok</span>
-      </a>
-      <a href="https://instagram.com/deonnadoesai" class="group flex flex-col items-center gap-2 transition-colors">
-         {% include "icons/instagram.njk" with { class: "w-8 h-8 text-secondary group-hover:text-primary" } %}
-         <span class="text-sm font-medium group-hover:text-primary">Instagram</span>
-      </a>
-      <a href="https://youtube.com/@deonnadoesai" class="group flex flex-col items-center gap-2 transition-colors">
-         {% include "icons/youtube.njk" with { class: "w-8 h-8 text-secondary group-hover:text-primary" } %}
-         <span class="text-sm font-medium group-hover:text-primary">YouTube</span>
-      </a>
-      <a href="https://linkedin.com/in/deonna" class="group flex flex-col items-center gap-2 transition-colors">
-         {% include "icons/linkedin.njk" with { class: "w-8 h-8 text-secondary group-hover:text-primary" } %}
-         <span class="text-sm font-medium group-hover:text-primary">LinkedIn</span>
-      </a>
-   </div>
+  <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+    <div class="shrink-0">
+      <div class="w-48 h-48 rounded-full overflow-hidden ring-4 ring-primary/20 bg-gradient-to-br from-primary/5 to-accent/5">
+      <img src="/assets/images/profile.jpg" alt="Deonna's profile picture" class="w-full h-full object-cover"> </div>
+    </div>
+    <div class="space-y-12 text-center md:text-left">
+      <h1 class="text-5xl md:text-7xl font-bold tracking-tight">
+        Deonna Does AI
+      </h1>
+      <p class="text-xl text-gray-700 leading-relaxed">
+        Welcome to Deonna Does AI! I'm passionate about exploring and sharing insights about artificial intelligence through
+        engaging content and meaningful discussions.
+      </p>
+    </div>
+  </div>
+  <div class="flex flex-wrap justify-center md:justify-start gap-8 pt-12">
+    <a href="https://tiktok.com/@deonnadoesai" class="group flex flex-col items-center gap-2 transition-colors">
+      {% svg "tiktok", "w-8 h-8 text-secondary group-hover:text-primary" %}
+      <span class="text-sm font-medium group-hover:text-primary">TikTok</span>
+    </a>
+    <a href="https://instagram.com/deonnadoesai" class="group flex flex-col items-center gap-2 transition-colors">
+      {% svg "instagram", "w-8 h-8 text-secondary group-hover:text-primary" %}
+      <span class="text-sm font-medium group-hover:text-primary">Instagram</span>
+    </a>
+    <a href="https://youtube.com/@deonnadoesai" class="group flex flex-col items-center gap-2 transition-colors">
+      {% svg "youtube", "w-8 h-8 text-secondary group-hover:text-primary" %}
+      <span class="text-sm font-medium group-hover:text-primary">YouTube</span>
+    </a>
+    <a href="https://linkedin.com/in/deonna" class="group flex flex-col items-center gap-2 transition-colors">
+      {% svg "linkedin", "w-8 h-8 text-secondary group-hover:text-primary" %}
+      <span class="text-sm font-medium group-hover:text-primary">LinkedIn</span>
+    </a>
+  </div>
 </div>
