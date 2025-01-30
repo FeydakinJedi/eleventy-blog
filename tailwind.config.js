@@ -3,6 +3,16 @@ module.exports = {
   content: [
     "./src/**/*.{html,js,jsx,ts,tsx,njk,md}",
   ],
+  safelist: [
+    'text-primary',
+    'text-secondary',
+    'text-accent',
+    'bg-primary',
+    'bg-secondary',
+    'bg-accent',
+    'hover:text-primary',
+    'hover:text-accent'
+  ],
   theme: {
     extend: {
       fontFamily: {

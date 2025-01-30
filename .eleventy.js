@@ -27,7 +27,7 @@ module.exports = function(eleventyConfig) {
       if (inputPath.includes("_site")) return;
       
       console.log('Processing CSS file:', inputPath);
-      console.log('CSS Content:', inputContent);
+      console.log('CSS Content Length:', inputContent.length);
       
       let result = await postcss([
         tailwindcss,
@@ -38,6 +38,7 @@ module.exports = function(eleventyConfig) {
       });
 
       console.log('Processed CSS size:', result.css.length);
+      console.log('Sample of processed CSS:', result.css.substring(0, 500));
       return async () => result.css;
     }
   });
