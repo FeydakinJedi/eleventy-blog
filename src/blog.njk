@@ -4,23 +4,45 @@ title: Blog
 ---
 
 <div class="max-w-4xl mx-auto space-y-8">
-  <h1 class="text-4xl md:text-5xl font-bold mb-6">Blog Posts</h1>
-  <div class="space-y-12">
-    {%- for post in collections.post | reverse -%}
-      <article class="border-b border-secondary/10 pb-8">
-        <h2 class="text-2xl font-bold mb-2">
-          <a href="{{ post.url }}" class="hover:text-primary transition-colors">
-            {{ post.data.title }}
-          </a>
-        </h2>
-        <time class="text-sm text-text/60 mb-4 block">{{ post.data.date | date("MMMM d, yyyy") }}</time>
-        {% if post.data.description %}
-          <p class="text-text/80">{{ post.data.description }}</p>
-        {% endif %}
-      </article>
-    {%- endfor -%}
-    {% if collections.post.length === 0 %}
-      <p class="text-text/60 italic">No blog posts yet. Check back soon!</p>
-    {% endif %}
-  </div>
-</div>
+   <h1 class="text-4xl md:text-5xl font-bold mb-6">Blog Posts</h1>
+   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {%- for post in collections.post | reverse -%}
+         <article class="flex flex-col bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all duration-200 group">
+            <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+               {% set defaultHero = "/assets/images/defaults/post-hero.jpg" %}
+               <img src="{% if post.data.heroImage %}{{ post.data.heroImage }}{% else %}{{ defaultHero }}{% endif %}" alt="{{ post.data.title }}" class="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105"></div>
+               <div class="p-6 flex flex-col flex-grow">
+                  {% if post.data.category %}
+                     <a href="/categories/{{ post.data.category }}" class="text-sm font-medium text-primary hover:text-primary/80 mb-2">
+                        {{ categories[post.data.category].name }}
+                     </a>
+                  {% endif %}
+                  <h2 class="text-2xl font-bold mb-2">
+                     <a href="{{ post.url }}" class="hover:text-primary transition-colors">
+                        {{ post.data.title }}
+                     </a>
+                  </h2>
+                  <time class="text-sm text-text/60 mb-4 block">{{ post.data.date | date("MMMM d, yyyy") }}</time>
+                  {% if post.data.description %}
+                     <p class="text-text/80 line-clamp-3">{{ post.data.description }}</p>
+                  {% endif %}
+                  <div class="mt-auto pt-4">
+                     <a href="{{ post.url }}" class="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors">
+                        Read more
+                        <svg class="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                           <path
+                              fill-rule="evenodd"
+                              d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0
+                                 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                              clip-rule="evenodd"/>
+                        </svg>
+                     </a>
+                  </div>
+               </div>
+            </article>
+         {%- endfor -%}
+         {% if collections.post.length === 0 %}
+            <p class="text-text/60 italic">No blog posts yet. Check back soon!</p>
+         {% endif %}
+      </div>
+   </div>

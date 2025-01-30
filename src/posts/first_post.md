@@ -1,9 +1,11 @@
 ---
-layout: base.njk
-title: My First Blog Post
-date: 2025-01-28
+layout: layouts/post.njk
+title: Your First Post Title
+date: 2024-01-01
+category: ai
+heroImage: /path/to/your/hero-image.jpg # Optional, will use default if not provided
 tags: post
-description: An introduction to my journey with AI and technology.
+description: A brief description of your post that will appear in the card
 ---
 
-This is my first blog post using Eleventy.
+Your post content here...
