@@ -6,6 +6,15 @@ const { DateTime } = require("luxon");
 const readingTime = require('reading-time');
 
 module.exports = function(eleventyConfig) {
+  // Transform for XML files
+  eleventyConfig.addTransform("xmlTransform", function(content, outputPath) {
+    if (outputPath && outputPath.endsWith(".xml")) {
+      // Remove any whitespace before the XML declaration
+      return content.replace(/^\s+<?xml/, '<?xml');
+    }
+    return content;
+  });
+
   // SVG Icon Shortcode
   eleventyConfig.addShortcode("svg", function(name, className) {
     // console.log(`Loading SVG: ${name} from ./src/svg/${name}.svg`);
@@ -127,5 +136,5 @@ module.exports = function(eleventyConfig) {
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     dataTemplateEngine: "njk"
-  };
-};    
+  };    
+}    
