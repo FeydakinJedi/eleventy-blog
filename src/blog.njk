@@ -6,7 +6,7 @@ title: Blog
 <div class="max-w-4xl mx-auto space-y-8">
   <h1 class="text-4xl md:text-5xl font-bold mb-6">Blog Posts</h1>
   {% include "components/search.njk" %}
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
     {%- for post in collections.post | reverse -%}
       <article data-search-item data-title="{{ post.data.title }}" data-description="{{ post.data.description }}" data-category="{{ post.data.category }}" class="flex flex-col bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all duration-200 group">
         <div class="aspect-w-16 aspect-h-9 overflow-hidden">

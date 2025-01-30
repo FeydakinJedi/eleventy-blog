@@ -39,7 +39,7 @@ title: Home
         <a href="/blog" class="text-primary hover:text-primary/80 font-medium">View all posts →</a>
       </div>
       {% include "components/search.njk" %}
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
         {%- for post in collections.post | reverse -%}
           <article data-search-item data-title="{{ post.data.title }}" data-description="{{ post.data.description }}" data-category="{{ post.data.category }}" class="flex flex-col bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all duration-200 group">
             <div class="aspect-w-16 aspect-h-9 overflow-hidden">
