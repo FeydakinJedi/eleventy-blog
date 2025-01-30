@@ -1,4 +1,5 @@
 ---
+layout: "layouts/post.njk"
 title: "Designing AI-First Application Architecture"
 date: 2023-12-05
 category: development

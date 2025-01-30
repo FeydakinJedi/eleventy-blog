@@ -1,4 +1,5 @@
 ---
+layout: "layouts/post.njk"
 title: "AI Ethics: A Developer's Responsibility"
 date: 2023-12-15
 category: ai

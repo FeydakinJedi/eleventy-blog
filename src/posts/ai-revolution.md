@@ -1,4 +1,5 @@
 ---
+layout: "layouts/post.njk"
 title: "The AI Revolution: What's Next for Developers"
 date: 2024-01-15
 category: ai

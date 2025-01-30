@@ -1,4 +1,5 @@
 ---
+layout: "layouts/post.njk"
 title: "Mastering Prompt Engineering: A Developer's Guide"
 date: 2024-01-10
 category: tutorials

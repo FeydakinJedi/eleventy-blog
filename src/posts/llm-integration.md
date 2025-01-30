@@ -1,4 +1,5 @@
 ---
+layout: "layouts/post.njk"
 title: "Integrating LLMs into Your Applications"
 date: 2023-12-20
 category: tutorials

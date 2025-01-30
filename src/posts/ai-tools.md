@@ -1,4 +1,5 @@
 ---
+layout: "layouts/post.njk"
 title: "Essential AI Tools for Modern Developers"
 date: 2023-12-28
 category: development

@@ -1,4 +1,5 @@
 ---
+layout: "layouts/post.njk"
 title: "Building with ChatGPT API: Advanced Techniques"
 date: 2023-11-28
 category: tutorials

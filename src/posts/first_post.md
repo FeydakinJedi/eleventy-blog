@@ -1,9 +1,8 @@
 ---
-layout: layouts/post.njk
+layout: "layouts/post.njk"
 title: Your First Post Title
 date: 2024-01-01
 category: ai
-heroImage: /path/to/your/hero-image.jpg # Optional, will use default if not provided
 tags: post
 description: A brief description of your post that will appear in the card
 ---

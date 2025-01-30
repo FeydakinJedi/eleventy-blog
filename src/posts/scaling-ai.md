@@ -1,4 +1,5 @@
 ---
+layout: "layouts/post.njk"
 title: "Scaling AI Applications: From Prototype to Production"
 date: 2023-11-20
 category: development

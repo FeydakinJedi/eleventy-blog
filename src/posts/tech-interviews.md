@@ -1,4 +1,5 @@
 ---
+layout: "layouts/post.njk"
 title: "Acing Technical Interviews at Top Tech Companies"
 date: 2023-12-10
 category: career

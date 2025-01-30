@@ -1,4 +1,5 @@
 ---
+layout: "layouts/post.njk"
 title: "5 Key Lessons from My FAANG Journey"
 date: 2024-01-05
 category: career
