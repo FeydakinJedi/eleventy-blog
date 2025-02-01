@@ -1,0 +1,20 @@
+<div x-data="{ searchQuery: '', posts: [], init() { this.posts =
+      Array.from(document.querySelectorAll('[data-search-item]')).map(el => ({ element: el, title:
+      el.getAttribute('data-title').toLowerCase(), description: (el.getAttribute('data-description') || '').toLowerCase(),
+      category: (el.getAttribute('data-category') || '').toLowerCase() })); this.filter(); }, filter() { const query =
+      this.searchQuery.toLowerCase(); this.posts.forEach(post => { const matches = !query || post.title.includes(query) ||
+      post.description.includes(query); post.element.style.display = matches ? '' : 'none'; }); } }">
+   <div class="relative max-w-xl mx-auto">
+      <input
+         type="search"
+         x-model="searchQuery"
+         @input="filter()"
+         placeholder="Search posts..."
+         class="w-full px-4 py-3 rounded-xl bg-white shadow-sm border border-secondary/10 focus:border-primary focus:ring-2
+            focus:ring-primary/20 outline-none transition-all">
+         <div class="absolute right-4 top-1/2 -translate-y-1/2 text-secondary">
+            {% svg "search", "w-5 h-5" %}
+         </div>
+      </div>
+   </div>
+</div>

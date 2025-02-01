@@ -12,7 +12,7 @@ permalink: /categories/{{ category }}/
       <h1 class="text-4xl md:text-5xl font-bold">{{ categories[category].name }}</h1>
       <p class="text-xl text-text/80">{{ categories[category].description }}</p>
    </header>
-   {% include "components/search.njk" %}
+   {% include "components/category-search.njk" %}
    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
       {%- for post in collections.post | filterByCategory(category) | reverse -%}
          <article data-search-item data-title="{{ post.data.title }}" data-description="{{ post.data.description }}" data-category="{{ post.data.category }}" class="flex flex-col bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all duration-200 group">
