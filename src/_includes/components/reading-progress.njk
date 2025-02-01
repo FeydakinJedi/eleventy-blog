@@ -1,0 +1,9 @@
+<div
+  x-data="{ progress: 0 }"
+  @scroll.window="progress = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100"
+  class="fixed top-0 left-0 right-0 z-[100]">
+  <div
+    class="h-1.5 bg-primary/80 shadow-sm transition-all duration-150 ease-out"
+    :style="`width: ${progress}%`"
+    x-cloak="x-cloak"></div>
+</div>
