@@ -8,6 +8,11 @@ const readingTime = require('reading-time');
 module.exports = function(eleventyConfig) {
   console.log("Registering shortcodes...");
 
+  // URL encoding filter
+  eleventyConfig.addFilter("encodeURIComponent", function(str) {
+    return encodeURIComponent(str);
+  });
+
   // Transform for XML files
   eleventyConfig.addTransform("xmlTransform", function(content, outputPath) {
     if (outputPath && outputPath.endsWith(".xml")) {
@@ -120,9 +125,12 @@ module.exports = function(eleventyConfig) {
   });
 
   // Add absolute URL filter for RSS feed
-  eleventyConfig.addFilter("absoluteUrl", (url, base) => {
+  eleventyConfig.addFilter("absoluteUrl", function(url, base) {
     try {
-      return new URL(url, base).toString();
+      // Handle both relative and absolute URLs
+      const baseUrl = base.endsWith('/') ? base : base + '/';
+      const fullUrl = url.startsWith('/') ? url.slice(1) : url;
+      return new URL(fullUrl, baseUrl).toString();
     } catch(e) {
       console.error("Error creating URL:", e);
       return url;
