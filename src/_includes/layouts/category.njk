@@ -35,7 +35,7 @@ permalink: /categories/{{ category }}/
       </div>
    </header>
    {% include "components/category-search.njk" %}
-   <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+   <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
       {%- for post in collections.post | filterByCategory(category) | reverse -%}
          <article data-search-item data-title="{{ post.data.title }}" data-description="{{ post.data.description }}" data-category="{{ post.data.category }}" class="flex flex-col bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all duration-200 group">
             <div class="aspect-w-16 aspect-h-9 overflow-hidden">
