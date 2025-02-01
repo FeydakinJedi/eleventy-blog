@@ -8,6 +8,12 @@ const readingTime = require('reading-time');
 module.exports = function(eleventyConfig) {
   console.log("Registering shortcodes...");
 
+  // Get Nunjucks engine instance
+  let nunjucksEngine;
+  eleventyConfig.on('eleventy.engine', engine => {
+    nunjucksEngine = engine;
+  });
+
   // URL encoding filter
   eleventyConfig.addFilter("encodeURIComponent", function(str) {
     return encodeURIComponent(str);
@@ -24,21 +30,18 @@ module.exports = function(eleventyConfig) {
 
   // Hero Placeholder Shortcode
   eleventyConfig.addShortcode("heroPlaceholder", function(title) {
-    console.log("Generating placeholder for:", title);
-    return `<svg width="100%" height="100%" viewBox="0 0 16 9" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="16" height="9" fill="#2D3047" />
-      <rect x="1.5" y="2.5" width="13" height="4" fill="#FF3B6F" fill-opacity="0.1" rx="0.5" />
-      <switch>
-        <foreignObject x="2" y="2.5" width="12" height="4">
-          <div xmlns="http://www.w3.org/1999/xhtml" 
-            style="font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            color: #FF3B6F; font-size: 0.7px; text-align: center; width: 100%; height: 100%;
-            display: flex; align-items: center; justify-content: center; line-height: 1.2;">
-            ${title}
+    return `
+      <div class="aspect-w-16 aspect-h-9 bg-secondary rounded-xl overflow-hidden">
+        <div class="flex items-center justify-center p-8">
+          <div class="relative">
+            <div class="absolute inset-0 bg-primary/10 rounded-lg -rotate-3"></div>
+            <div class="relative px-6 py-4 text-xl md:text-2xl font-medium text-primary text-center">
+              ${title}
+            </div>
           </div>
-        </foreignObject>
-      </switch>
-    </svg>`;
+        </div>
+      </div>
+    `;
   });
 
   // SVG Icon Shortcode

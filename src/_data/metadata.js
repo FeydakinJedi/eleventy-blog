@@ -4,6 +4,6 @@ module.exports = {
   url: "https://deonnadoesai.com", // replace with your actual domain
   author: {
     name: "Deonna",
-    email: "your@email.com" // optional
+    email: "deonna@deonnadoesai.com" // optional
   }
 }; 
