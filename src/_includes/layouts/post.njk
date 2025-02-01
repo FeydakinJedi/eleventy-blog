@@ -24,14 +24,14 @@ layout: base.njk
     {% if heroImage %}
       <div class="max-w-2xl mx-auto aspect-w-16 aspect-h-9 rounded-xl overflow-hidden">
         <img src="{{ heroImage }}" alt="{{ title }}" class="w-full h-full object-cover"></div>
-      {% else %}
-        <div class="max-w-2xl mx-auto aspect-w-16 aspect-h-9 rounded-xl overflow-hidden">
+      {% elif showPlaceholder !== false %}
+        <div class="max-w-3xl mx-auto aspect-w-16 aspect-h-9 rounded-xl overflow-hidden">
           {% set placeholder %}{% heroPlaceholder title %}{% endset %}
           {{ placeholder | safe }}
         </div>
       {% endif %}
     </div>
-    <div class="prose prose-lg max-w-2xl mx-auto">
+    <div class="prose prose-lg max-w-3xl mx-auto">
       {{ content | safe }}
     </div>
   </article>
