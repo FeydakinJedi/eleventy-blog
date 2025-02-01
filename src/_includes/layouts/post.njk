@@ -3,7 +3,7 @@ layout: base.njk
 ---
 
 {% set categoryData = categories[category] %}
-<article class="max-w-4xl mx-auto">
+<article class="max-w-3xl mx-auto">
   <div class="space-y-6 mb-12">
     {% if category %}
       <a
@@ -22,16 +22,16 @@ layout: base.njk
     </div>
     {% include "components/author.njk" %}
     {% if heroImage %}
-      <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden">
+      <div class="max-w-2xl mx-auto aspect-w-16 aspect-h-9 rounded-xl overflow-hidden">
         <img src="{{ heroImage }}" alt="{{ title }}" class="w-full h-full object-cover"></div>
       {% else %}
-        <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden">
+        <div class="max-w-2xl mx-auto aspect-w-16 aspect-h-9 rounded-xl overflow-hidden">
           {% set placeholder %}{% heroPlaceholder title %}{% endset %}
           {{ placeholder | safe }}
         </div>
       {% endif %}
     </div>
-    <div class="prose prose-lg max-w-none">
+    <div class="prose prose-lg max-w-2xl mx-auto">
       {{ content | safe }}
     </div>
   </article>
