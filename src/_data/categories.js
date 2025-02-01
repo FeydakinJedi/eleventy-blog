@@ -1,18 +1,18 @@
 module.exports = {
   ai: {
-    name: "AI & Machine Learning",
-    description: "Exploring artificial intelligence, machine learning, and their applications"
+    name: "Artificial Intelligence",
+    description: "Exploring the latest developments in AI, from machine learning to neural networks and beyond."
   },
   development: {
     name: "Development",
-    description: "Software development tips, tricks, and best practices"
+    description: "Best practices, tools, and techniques for modern software development."
   },
   tutorials: {
     name: "Tutorials",
-    description: "Step-by-step guides and how-to content"
+    description: "Step-by-step guides and practical tutorials to help you learn new skills and technologies."
   },
   career: {
-    name: "Tech Career",
-    description: "Career insights and advice from my FAANG experience"
+    name: "Career Growth",
+    description: "Insights and advice for advancing your career in tech, from interviews to leadership."
   }
 }; 

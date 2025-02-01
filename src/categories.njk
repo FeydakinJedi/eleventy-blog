@@ -1,0 +1,10 @@
+---
+pagination:
+  data: categories
+  size: 1
+  alias: category
+permalink: /categories/{{ category }}/
+layout: layouts/category.njk
+eleventyComputed:
+  title: "{{ categories[category].name }} Posts"
+--- 
