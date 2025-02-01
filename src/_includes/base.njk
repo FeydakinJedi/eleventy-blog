@@ -8,6 +8,11 @@
       <link rel="stylesheet" href="/styles/main.css">
       <link rel="alternate" type="application/atom+xml" title="RSS Feed for {{ metadata.title }}" href="/feed.xml">
       <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+      <script>
+         document.addEventListener('alpine:init', () => {
+            Alpine.store('search', {{ searchStore.store | safe }});
+         });
+      </script>
    </head>
    <body
       class="flex flex-col min-h-full bg-background text-text">

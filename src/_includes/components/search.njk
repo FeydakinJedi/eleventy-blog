@@ -1,43 +1,38 @@
-<div x-data="{ searchQuery: '', selectedCategory: '', posts: [], init() { this.posts =
-    Array.from(document.querySelectorAll('[data-search-item]')).map(el => ({ element: el, title:
-    el.getAttribute('data-title').toLowerCase(), description: (el.getAttribute('data-description') || '').toLowerCase(),
-    category: (el.getAttribute('data-category') || '').toLowerCase() })); this.filter(); }, filter() { const query =
-    this.searchQuery.toLowerCase(); this.posts.forEach(post => { const matchesSearch = !query || post.title.includes(query)
-    || post.description.includes(query) || post.category.includes(query); const matchesCategory = !this.selectedCategory ||
-    post.category === this.selectedCategory; post.element.style.display = (matchesSearch && matchesCategory) ? '' : 'none';
-    }); } }">
-  <div class="space-y-6">
-    <div class="relative max-w-xl mx-auto">
-      <input
-        type="search"
-        x-model="searchQuery"
-        @input="filter()"
-        placeholder="Search posts..."
-        class="w-full px-4 py-3 rounded-xl bg-white shadow-sm border border-secondary/10 focus:border-primary focus:ring-2
-          focus:ring-primary/20 outline-none transition-all">
-        <div class="absolute right-4 top-1/2 -translate-y-1/2 text-secondary">
-          {% svg "search", "w-5 h-5" %}
-        </div>
-      </div>
-      <div class="flex flex-wrap gap-2">
-        <button
-          @click="selectedCategory = ''; filter()"
-          :class="!selectedCategory ? 'bg-primary text-white' : 'bg-secondary/10 text-secondary hover:bg-secondary/20'"
-          class="px-4 py-2 rounded-full text-sm font-medium transition-colors">
-          All ({{ collections.post.length }})
-        </button>
-        {% for category, data in categories | dictsort %}
-          {% set categoryPosts = collections.post | filterByCategory(category) %}
-          {% if categoryPosts.length > 0 %}
+<div x-data x-init="$store.search.init()">
+   <div class="space-y-6">
+      <div class="relative max-w-xl mx-auto">
+         <input
+            type="search"
+            x-model="$store.search.query"
+            @input="$store.search.filterPosts()"
+            placeholder="Search posts..."
+            class="w-full px-4 py-3 rounded-xl bg-white shadow-sm border border-secondary/10 focus:border-primary focus:ring-2
+               focus:ring-primary/20 outline-none transition-colors">
+            <div class="absolute right-4 top-1/2 -translate-y-1/2 text-secondary">
+               {% svg "search", "w-5 h-5" %}
+            </div>
+         </div>
+         <div class="flex flex-wrap gap-2">
             <button
-              @click="selectedCategory = '{{ category }}'; filter()"
-              :class="selectedCategory === '{{ category }}' ? 'bg-primary text-white' : 'bg-secondary/10 text-secondary
-                hover:bg-secondary/20'"
-              class="px-4 py-2 rounded-full text-sm font-medium transition-colors">
-              {{ data.name }} ({{ categoryPosts.length }})
+               @click="$store.search.setCategory('')"
+               :class="{ 'bg-primary text-white': !$store.search.activeCategory && '{{ page.url }}' !== '/blog/', 'bg-secondary/10
+                  text-secondary hover:bg-secondary/20': $store.search.activeCategory || '{{ page.url }}' === '/blog/' }"
+               class="px-4 py-2 rounded-full text-sm font-medium transition-colors">
+               All ({{ collections.post.length }})
             </button>
-          {% endif %}
-        {% endfor %}
+            {% for category, data in categories | dictsort %}
+               {% set categoryPosts = collections.post | filterByCategory(category) %}
+               {% if categoryPosts.length > 0 %}
+                  <button
+                     @click="$store.search.setCategory('{{ category }}')"
+                     :class="{ 'bg-primary text-white': $store.search.activeCategory === '{{ category }}' || '{{ page.url }}' ===
+                        '/categories/{{ category }}/', 'bg-secondary/10 text-secondary hover:bg-secondary/20': $store.search.activeCategory !==
+                        '{{ category }}' && '{{ page.url }}' !== '/categories/{{ category }}/' }"
+                     class="px-4 py-2 rounded-full text-sm font-medium transition-colors">
+                     {{ data.name }} ({{ categoryPosts.length }})
+                  </button>
+               {% endif %}
+            {% endfor %}
+         </div>
       </div>
-    </div>
-  </div>
+   </div>
