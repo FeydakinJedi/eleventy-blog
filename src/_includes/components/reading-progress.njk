@@ -1,9 +1,15 @@
 <div
-  x-data="{ progress: 0 }"
-  @scroll.window="progress = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100"
-  class="fixed top-0 left-0 right-0 z-[100]">
-  <div
-    class="h-1.5 bg-primary/80 shadow-sm transition-all duration-150 ease-out"
-    :style="`width: ${progress}%`"
-    x-cloak="x-cloak"></div>
+   x-data="{ progress: 0, init() { const isScrollable = document.documentElement.scrollHeight > window.innerHeight + 100;
+      this.progress = isScrollable ? 0 : 100; if (isScrollable) { window.addEventListener('scroll', () => { this.progress =
+      (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100; }); } } }"
+   class="fixed top-0 left-0 right-0 z-[100]">
+   <div
+      class="h-1.5 bg-primary/80 shadow-sm transition-all duration-150 ease-out"
+      :style="`width: ${progress}%`"
+      x-transition:enter="transition-opacity duration-300"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="transition-opacity duration-200"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"></div>
 </div>
