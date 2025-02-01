@@ -28,10 +28,16 @@ module.exports = function(eleventyConfig) {
     return `<svg width="100%" height="100%" viewBox="0 0 16 9" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="16" height="9" fill="#2D3047" />
       <rect x="1.5" y="2.5" width="13" height="4" fill="#FF3B6F" fill-opacity="0.1" rx="0.5" />
-      <text x="8" y="5" font-family="system-ui" font-size="0.8" fill="#FF3B6F" text-anchor="middle"
-        dominant-baseline="middle">
-        ${title}
-      </text>
+      <switch>
+        <foreignObject x="2" y="2.5" width="12" height="4">
+          <div xmlns="http://www.w3.org/1999/xhtml" 
+            style="font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #FF3B6F; font-size: 0.7px; text-align: center; width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center; line-height: 1.2;">
+            ${title}
+          </div>
+        </foreignObject>
+      </switch>
     </svg>`;
   });
 
