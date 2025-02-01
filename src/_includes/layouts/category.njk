@@ -8,9 +8,31 @@ permalink: /categories/{{ category }}/
 ---
 
 <div class="max-w-4xl mx-auto space-y-8">
+   <nav class="flex items-center gap-2 text-sm text-text/60">
+      <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
+      <span>›</span>
+      <span>{{ categories[category].name }}</span>
+   </nav>
    <header class="space-y-4">
-      <h1 class="text-4xl md:text-5xl font-bold">{{ categories[category].name }}</h1>
+      <div class="flex items-center justify-between">
+         <h1 class="text-4xl md:text-5xl font-bold">{{ categories[category].name }}</h1>
+         {% set categoryPosts = collections.post | filterByCategory(category) %}
+         <span class="text-lg text-text/60">{{ categoryPosts.length }} post{% if categoryPosts.length != 1 %}s{% endif %}
+         </span>
+      </div>
       <p class="text-xl text-text/80">{{ categories[category].description }}</p>
+      <div class="pt-4">
+         <a href="/blog" class="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+               <path
+                  fill-rule="evenodd"
+                  d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1
+                     1 0 010 1.414z"
+                  clip-rule="evenodd"/>
+            </svg>
+            Back to all posts
+         </a>
+      </div>
    </header>
    {% include "components/category-search.njk" %}
    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
