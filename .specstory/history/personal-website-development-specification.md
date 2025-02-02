@@ -7557,6 +7557,24 @@ Would you like me to:
 
 ---
 
+_**User**_
+
+Now update the README.
+
+The audience is people who are building their first AI app. Explain that I built this app using Cursor (that's you) and all the logs are in a file named "Entire Chat with Cursor.md".
+
+Explain how to customize the site for one's own personal blog step by step, highlighting the important areas of the codebase to customize. 
+
+Also explain how to download and run Cursor and run the app. Step by step.
+
+---
+
+_**Assistant**_
+
+
+
+---
+
 
 
 ---
