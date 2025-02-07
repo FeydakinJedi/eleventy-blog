@@ -1,9 +1,9 @@
 module.exports = {
-  title: "Deonna Does AI",
-  description: "Helping everyone integrate AI into daily life and build AI-first apps.",
-  url: "https://deonnadoesai.com", // replace with your actual domain
+  title: "Flyspecks",
+  description: "Articles on the web",
+  url: "", // replace with your actual domain
   author: {
-    name: "Deonna",
-    email: "deonna@deonnadoesai.com" // optional
+    name: "Andy",
+    email: "blog@flyspecs.web" // optional
   }
 }; 

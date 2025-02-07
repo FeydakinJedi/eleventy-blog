@@ -1,18 +1,16 @@
+const { collapseTextChangeRangesAcrossMultipleVersions } = require("typescript")
+
 module.exports = {
-  ai: {
-    name: "Artificial Intelligence",
-    description: "Exploring the latest developments in AI, from machine learning to neural networks and beyond."
+  black_history: {
+    name: "Black History",
+    description: "In honor of Black History Month 2025, a series of articles on African Americans' contributions to the Labor Movement."
   },
   development: {
     name: "Development",
-    description: "Best practices, tools, and techniques for modern software development."
+    description: "Code patterns and dev diary."
   },
-  tutorials: {
-    name: "Tutorials",
-    description: "Step-by-step guides and practical tutorials to help you learn new skills and technologies."
-  },
-  career: {
-    name: "Career Growth",
-    description: "Insights and advice for advancing your career in tech, from interviews to leadership."
+  ttrpgs: {
+    name: "TTRPGs",
+    description: "Yes, and?"
   }
 }; 

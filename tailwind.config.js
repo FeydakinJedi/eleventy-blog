@@ -20,11 +20,11 @@ module.exports = {
         body: ['Cabinet Grotesk', 'system-ui', 'sans-serif'],
       },
       colors: {
-        primary: '#FF3B6F',
-        secondary: '#2D3047',
-        accent: '#FFD23F',
-        background: '#FAFAFA',
-        text: '#1A1A1A',
+        primary: '#d62828 ',
+        secondary: '#f77f00',
+        accent: '#d62828',
+        background: '#eae2b7',
+        text: '#003049',
       },
       fontSize: {
         'display-1': ['4rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],

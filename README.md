@@ -1,3 +1,7 @@
+# Author's Note
+
+Hey folks, FJ here! Everything below this paragraph is the work of Deonna Hodges. You too can implement a beautiful, concise blog using her repository [Deonna Does Ai Blog Template](https://github.com/deonna/deonnadoesai).
+
 # Deonna Does AI Blog Template
 
 ## Made for those new to AI-First Development
