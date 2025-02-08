@@ -13,11 +13,15 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
+# Install the blog dependencies
+RUN npm install @11ty/eleventy
+RUN npm install serve
+
+# Build the blog using Eleventy
+RUN npx @11ty/eleventy
+
 # Expose the port that the server will run on
 EXPOSE 8080
 
-# Run the command to build the Eleventy site
-RUN npx @11ty/eleventy
-
-# Run the command to start the server
+# Set the default command to serve the blog
 CMD ["npx", "serve", "-p", "8080", "_site"]
