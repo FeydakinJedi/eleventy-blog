@@ -1,7 +1,7 @@
 {
-  "name": "deonnadoesai",
+  "name": "flyspecs",
   "version": "1.0.0",
-  "description": "Deonna Does AI personal website",
+  "description": "A personal website",
   "main": "index.js",
   "scripts": {
     "build": "npx @11ty/eleventy",
@@ -9,7 +9,7 @@
     "start": "npm run dev",
     "build:css": "npx postcss src/styles/main.css -o _site/styles/main.css"
   },
-  "author": "deonna",
+  "author": "andy",
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",

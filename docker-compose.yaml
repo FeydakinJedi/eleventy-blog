@@ -1,5 +1,6 @@
 services:
   eleventy-blog:
+    image: github.com/feydakinjedi/eleventy-blog.git
     build: .
     ports:
       - "8080:8080"

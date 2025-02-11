@@ -8,7 +8,7 @@ WORKDIR /app
 RUN git clone https://github.com/FeydakinJedi/eleventy-blog . 
 
 # Install the dependencies
-RUN npm install
+RUN npm install -g @11ty/elevent
 
 # # Copy the rest of the application code to the working directory
 # COPY . .
@@ -17,4 +17,5 @@ RUN npm install
 EXPOSE 8080
 
 # Set the default command to serve the blog
-CMD ["npm", "start"]
+# CMD ["npm", "start"]
+CMD ["npx", "@11ty/eleventy", "--serve"]
