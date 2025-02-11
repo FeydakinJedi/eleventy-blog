@@ -1,7 +1,9 @@
-services:
-  blog:
+  eleventy-blog:
     build: .
     ports:
       - "8080:8080"
     volumes:
       - .:/app
+    working_dir: /app
+    # command: ["npx", "@11ty/eleventy", "--serve"]
+    command: ["npm", "start"]
