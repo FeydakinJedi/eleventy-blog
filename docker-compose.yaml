@@ -1,11 +1,9 @@
 services:
-  eleventy-blog:
-    image: github.com/feydakinjedi/eleventy-blog.git
-    build: .
-    ports:
-      - "8080:8080"
-    volumes:
-      - .:/app
+  eleventy:
+    image: node:18
+    container_name: eleventy-blog
     working_dir: /app
-    # command: ["npx", "@11ty/eleventy", "--serve"]
-    command: ["npm", "start"]
+    ports:
+      - "5175:8080"
+    command: sh -c "git clone https://github.com/FeydakinJedi/eleventy-blog.git /app && npm install && npx @11ty/eleventy --serve"
+    restart: unless-stopped
