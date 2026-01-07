@@ -1,0 +1,67 @@
+I'll help you create a GitHub Actions workflow that compiles your Eleventy site and deploys it to GitHub Pages on push to master. I've created a GitHub Actions workflow file for your Eleventy blog.  Here's what was set up:
+
+```yaml name=. github/workflows/build-and-deploy.yml url=https://github.com/FeydakinJedi/eleventy-blog/blob/master/.github/workflows/build-and-deploy.yml
+name: Build and Deploy to GitHub Pages
+
+on:
+  push:
+    branches: 
+      - master
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency: 
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node. js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with: 
+          path: '_site'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps. deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+```
+
+**What this workflow does:**
+
+1. **Triggers on push to master** - Runs whenever you push commits to the master branch
+2. **Builds the Eleventy site** - Installs dependencies and runs `npm run build`
+3. **Uploads the output** - Takes the compiled site (typically in `_site` directory) and prepares it for deployment
+4. **Deploys to GitHub Pages** - Automatically publishes the built site to GitHub Pages
+
+**Next steps:**
+1. Make sure your Eleventy build output goes to the `_site` directory (adjust the path in the workflow if different)
+2. Ensure you have a `build` script in your `package.json`
+3. Go to your repository Settings → Pages and set the source to "GitHub Actions"
+4. Push to master and the workflow will automatically run! 
