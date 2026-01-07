@@ -1,7 +1,7 @@
 ---
 layout: "layouts/post.njk"
 title: "AI Hallucinations: Do Not Trust, Verify"
-date: 2023-12-15
+date: 2024-12-15
 category: development
 description: "I was building a Django project using a library that does not exist."
 tags: post
