@@ -1,0 +1,41 @@
+---
+layout: base.njk
+---
+
+<div class="relative">
+  {% include "components/reading-progress.njk" %}
+</div>
+{% set categoryData = categories[category] %}
+<article class="max-w-3xl mx-auto">
+  <div class="space-y-6 mb-12">
+    {% if category %}
+      <a
+        href="/categories/{{ category }}"
+        class="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80">
+        {{ categoryData.name }}
+      </a>
+    {% endif %}
+    <h1 class="text-4xl md:text-5xl font-bold">{{ title }}</h1>
+    <div class="flex items-center gap-4 text-text/60">
+      <time datetime="{{ page.date | date('yyyy-MM-dd') }}">
+        {{ page.date | date("MMMM d, yyyy") }}
+      </time>
+      <span class="text-text/20">•</span>
+      <span>{{ content | readingTime }} min read</span>
+    </div>
+    {% include "components/author.njk" %}
+    {% if heroImage %}
+      <div class="max-w-2xl mx-auto aspect-w-16 aspect-h-9 rounded-xl overflow-hidden">
+        <img src="{{ heroImage }}" alt="{{ title }}" class="w-full h-full object-cover"></div>
+      {% elif showPlaceholder !== false %}
+        <div class="max-w-3xl mx-auto aspect-w-16 aspect-h-9 rounded-xl overflow-hidden">
+          {% set placeholder %}{% heroPlaceholder title %}{% endset %}
+          {{ placeholder | safe }}
+        </div>
+      {% endif %}
+    </div>
+    <div class="prose prose-lg max-w-3xl mx-auto">
+      {{ content | safe }}
+    </div>
+  </article>
+  {% include "components/share-button.njk" %}
